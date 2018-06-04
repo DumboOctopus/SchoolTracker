@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">SchoolTracker</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="geofence_transition_entered">Geofence transition entered</string>
+    <string name="geofence_transition_exited">geofence trasnitiotn exited</string>
+    <string name="unknown_geofence_transition">geofence transition unknown</string>
+    <string name="geofence_transition_invalid_type">geofence transition invalid %d</string>
+    <string name="title_local_history">Local History</string>
+    <string name="shared_preferences_name">PREFERENCES</string>
+    <string name="approve_shift_string">Approve</string>
+</resources>
