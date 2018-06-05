@@ -34,6 +34,10 @@ dependencies {
     compile 'com.android.support:support-v4:26.+'
     compile 'com.android.support:recyclerview-v7:26.+'
 
+    //swipte action
+    compile 'com.wdullaer:swipeactionadapter:2.0.0'
+
+    //sheets
     compile 'com.google.android.gms:play-services-auth:15.0.1'
     compile 'pub.devrel:easypermissions:0.3.0'
     compile('com.google.api-client:google-api-client-android:1.23.0') {

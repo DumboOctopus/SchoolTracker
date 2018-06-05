@@ -12,16 +12,23 @@ import java.util.Locale;
 
 
 public class ShiftData implements Serializable{
-    private static final long serialVersionUID = 4L; //change whenever you change class
+    private static final long serialVersionUID = 4L + 1; //change whenever you change class
+
+    public enum ShiftDataState{
+        APPROVED, UNVERIFIED, DISPUTED, DISPUTE_ACCEPTED //dispute approved = future feature
+    }
 
     private Date start;
     private Date end;
     private String location;
+    private ShiftDataState state;
+    private String disputeMessage;
 
     public ShiftData(String location, Date start){
         this.start = start;
         this.end = null;
         this.location = location;
+        this.state = ShiftDataState.UNVERIFIED;
     }
 
     public void setEnd(Date end){
@@ -40,6 +47,7 @@ public class ShiftData implements Serializable{
         return location;
     }
 
+    public ShiftDataState getState(){return state;}
     /**
      *
      * @return the difference between start and end in hours
@@ -49,8 +57,8 @@ public class ShiftData implements Serializable{
         int minutes =  (int)(60 * (roundedHours - Math.floor(roundedHours)));
 
         if(roundedHours < 1)
-            return (end==null?"+":"")  + minutes + " mins";
-        return (end==null?"+":"") + Math.floor(roundedHours)+" hrs " + minutes + " mins";
+            return (end==null?"+":"")  + minutes + " m";
+        return (end==null?"+":"") + Math.floor(roundedHours)+" h\n" + minutes + " m";
     }
 
     public String toString(){
@@ -58,8 +66,8 @@ public class ShiftData implements Serializable{
     }
 
     public String getStartString(){
-        SimpleDateFormat dateFormatter = new SimpleDateFormat("h:mm a EEE, MMM d yyyy", Locale.ENGLISH);
-        return "Entered: ~"+dateFormatter.format(start);
+        SimpleDateFormat dateFormatter = new SimpleDateFormat("MM/d h:mm a", Locale.ENGLISH);
+        return ""+dateFormatter.format(start);
     }
 
     @Override
@@ -81,6 +89,16 @@ public class ShiftData implements Serializable{
         result = 31 * result + (end != null ? end.hashCode() : 0);
         result = 31 * result + location.hashCode();
         return result;
+    }
+
+
+    public void approve(){
+        state = ShiftDataState.APPROVED;
+    }
+
+    public void dispute(String disputeMessage){
+        this.disputeMessage = disputeMessage;
+        state = ShiftDataState.DISPUTED;
     }
 
     //=======================================UTILITY METHODS==========================//

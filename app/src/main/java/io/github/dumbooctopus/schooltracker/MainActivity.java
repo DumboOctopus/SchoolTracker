@@ -96,19 +96,19 @@ public class MainActivity extends AppCompatActivity {
         buildGeoFences();
 
         //temporary
-//        try {
-//
-//            SharedPreferences prefs = getSharedPreferences(getString(R.string.shared_preferences_name), Context.MODE_PRIVATE);
-//            SharedPreferences.Editor editor = prefs.edit();
-//
-//            ArrayList<ShiftData> shiftData = new ArrayList<>();
-//            shiftData.add(new ShiftData("Loc 1", Calendar.getInstance().getTime()));
-//
-//            editor.putString("SHIFT_DATA", ObjectSerializer.serialize(shiftData));
-//            editor.commit();
-//        } catch (Exception e){
-//
-//        }
+        try {
+
+            SharedPreferences prefs = getSharedPreferences(getString(R.string.shared_preferences_name), Context.MODE_PRIVATE);
+            SharedPreferences.Editor editor = prefs.edit();
+
+            ArrayList<ShiftData> shiftData = new ArrayList<>();
+            shiftData.add(new ShiftData("Loc 1", Calendar.getInstance().getTime()));
+            shiftData.get(0).setEnd(Calendar.getInstance().getTime());
+            editor.putString("SHIFT_DATA", ObjectSerializer.serialize(shiftData));
+            editor.commit();
+        } catch (Exception e){
+
+        }
 
         //TODO: do I restart the app if permissions weren't given? What if onCreated called multiple times will geofences be added again.
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
