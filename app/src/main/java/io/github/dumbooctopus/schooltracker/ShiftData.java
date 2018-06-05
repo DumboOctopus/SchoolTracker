@@ -40,6 +40,10 @@ public class ShiftData implements Serializable{
         return location;
     }
 
+    public boolean inProgress(){
+        return end == null;
+    }
+
     /**
      *
      * @return the difference between start and end in hours

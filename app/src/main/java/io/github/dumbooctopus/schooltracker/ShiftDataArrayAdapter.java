@@ -1,6 +1,7 @@
 package io.github.dumbooctopus.schooltracker;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
@@ -38,6 +39,10 @@ public class ShiftDataArrayAdapter extends ArrayAdapter<ShiftData> {
 
         TextView location = (TextView) listItem.findViewById(R.id.location);
         location.setText(currentShiftData.getLocation());
+        if(currentShiftData.inProgress())
+            location.setTextColor(Color.BLUE);
+        else
+            location.setTextColor(Color.BLACK);
 
         TextView startTime = (TextView) listItem.findViewById(R.id.start_time);
         startTime.setText(currentShiftData.getStartString());

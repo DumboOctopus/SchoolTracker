@@ -35,7 +35,7 @@
     <Button
         android:layout_width="172dp"
         android:layout_height="49dp"
-        android:text="Dispute"
+        android:text=" "
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="8dp"
         android:layout_marginRight="8dp"

@@ -89,27 +89,25 @@ public class MainActivity extends AppCompatActivity {
         BottomNavigationView navigation = (BottomNavigationView) findViewById(R.id.navigation);
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
+        //---
+        Fragment selectedFragment = HomeFragment.newInstance();
+        FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
+        transaction.replace(R.id.content, selectedFragment);
+        transaction.commit();
+
         //geofencing
         mGeofencingClient = LocationServices.getGeofencingClient(this);
 
         mGeofenceList = new ArrayList<>();
         buildGeoFences();
 
-        //temporary
-//        try {
-//
-//            SharedPreferences prefs = getSharedPreferences(getString(R.string.shared_preferences_name), Context.MODE_PRIVATE);
-//            SharedPreferences.Editor editor = prefs.edit();
-//
-//            ArrayList<ShiftData> shiftData = new ArrayList<>();
-//            shiftData.add(new ShiftData("Loc 1", Calendar.getInstance().getTime()));
-//
-//            editor.putString("SHIFT_DATA", ObjectSerializer.serialize(shiftData));
-//            editor.commit();
-//        } catch (Exception e){
-//
-//        }
 
+
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
         //TODO: do I restart the app if permissions weren't given? What if onCreated called multiple times will geofences be added again.
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
@@ -131,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
                         }
                     });
         }
+
     }
 
     private void buildGeoFences() {

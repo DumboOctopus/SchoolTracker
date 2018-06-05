@@ -85,14 +85,7 @@ public class LocalHistoryFragment extends Fragment {
             Log.d("ERROR", e.toString());
         }
 
-        btnApprove = (Button) view.findViewById(R.id.btnApprove);
-        btnApprove.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Snackbar mySnackbar = Snackbar.make(view, "adsf", Snackbar.LENGTH_SHORT);
-                mySnackbar.show();
-            }
-        });
+
     }
 
 
